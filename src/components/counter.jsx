@@ -4,7 +4,6 @@ import { Badge } from "react-bootstrap";
 class Counter extends Component {
   state = {
     value: this.props.value,
-    tags: ["tag1", "tag2", "tag3", "tag4", "tag5", "tag6", "tag7"],
   };
   getBadgeClasses() {
     let classes = "bg-";
@@ -24,7 +23,9 @@ class Counter extends Component {
   render() {
     return (
       <div>
+        {/* {this.props.children} */}
         {/* <h1>Counter Class</h1> */}
+        <h2>Counter #{this.props.id}</h2>
         <Badge style={{ fontSize: 20 }} className={this.getBadgeClasses()}>
           {this.formatCounter()}
         </Badge>
@@ -34,16 +35,6 @@ class Counter extends Component {
         >
           Increment
         </button>
-
-        {/* {this.state.tags.length === 0 ? (
-          "please add something in tags"
-        ) : ( */}
-        {/* <ul>
-          {this.state.tags.map((tag) => (
-            <li key={tag}> {tag}</li>
-          ))}
-        </ul> */}
-        {/* )} */}
       </div>
     );
   }
