@@ -16,8 +16,6 @@ class Counter extends Component {
   render() {
     return (
       <div>
-        {/* {this.props.children} */}
-        {/* <h1>Counter Class</h1> */}
         <h2>Counter #{this.props.counter.id}</h2>
         <Badge style={{ fontSize: 20 }} className={this.getBadgeClasses()}>
           {this.formatCounter()}

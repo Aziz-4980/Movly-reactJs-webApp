@@ -1,14 +1,18 @@
 import React from 'react';
 // import Movies from './components/movie';
+import NavBar from './components/navbar';
 import Counters from './components/counters';
 import './App.css';
 
 function App() {
   return (
 
-    <main className='container'>
-      <Counters />
-    </main>
+    <React.Fragment>
+      <NavBar />
+      <main className='container'>
+        <Counters />
+      </main>
+    </React.Fragment>
   );
 }
 
