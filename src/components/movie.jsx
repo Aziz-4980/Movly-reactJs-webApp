@@ -7,6 +7,7 @@ import PropTypes from "prop-types";
 import ListGroup from "./common/listGroup";
 import { getGenres } from "../services/fakeGenreService";
 import MoviesTable from "./common/moviesTable";
+import _ from "lodash";
 
 class Movies extends Component {
   state = {
@@ -15,9 +16,10 @@ class Movies extends Component {
     currentPage: 1,
     selectedGenre: "",
     pageSize: 4,
+    sortColumn: { path: "title", order: "asc" },
   };
   componentDidMount() {
-    const genres = [{ name: "All movies" }, ...getGenres()];
+    const genres = [{ _id: "", name: "All movies" }, ...getGenres()];
     this.setState({ movies: getMovies(), genres });
   }
 
@@ -26,7 +28,7 @@ class Movies extends Component {
     this.setState({ movies });
   };
 
-  handleClicked = (movie) => {
+  handleLike = (movie) => {
     let movies = [...this.state.movies];
     const index = movies.indexOf(movie);
     movies[index] = { ...movies[index] };
@@ -42,6 +44,17 @@ class Movies extends Component {
     // console.log(genre);
   };
 
+  handleSort = (path) => {
+    const sortColumn = { ...this.state.sortColumn };
+    if (sortColumn.path === path)
+      sortColumn.order = sortColumn.order === "asc" ? "desc" : "asc";
+    else {
+      sortColumn.path = path;
+      sortColumn.order = "asc";
+    }
+    this.setState({ sortColumn });
+  };
+
   render() {
     let { length: count } = this.state.movies;
 
@@ -50,6 +63,7 @@ class Movies extends Component {
       currentPage,
       pageSize,
       selectedGenre,
+      sortColumn,
       movies: allMovies,
     } = this.state;
 
@@ -58,7 +72,9 @@ class Movies extends Component {
         ? allMovies.filter((m) => m.genre._id === selectedGenre._id)
         : allMovies;
 
-    const movies = paginate(filtered, currentPage, pageSize);
+    const sorted = _.orderBy(filtered, [sortColumn.path], [sortColumn.order]);
+
+    const movies = paginate(sorted, currentPage, pageSize);
     return (
       <>
         <br />
@@ -76,8 +92,9 @@ class Movies extends Component {
             <h1>Showing {filtered.length} Movies:</h1>
             <MoviesTable
               movies={movies}
-              onLike={this.handleClicked}
+              onLike={this.handleLike}
               onDelete={this.handleDelete}
+              onSort={this.handleSort}
             />
             <Pagination
               itemCount={filtered.length}
