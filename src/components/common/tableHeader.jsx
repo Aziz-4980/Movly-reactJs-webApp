@@ -21,7 +21,7 @@ class TableHeader extends Component {
   render() {
     return (
       <tr>
-        {this.props.column.map((column) => (
+        {this.props.columns.map((column) => (
           <th
             className="clickable"
             key={column.path || column.key}
