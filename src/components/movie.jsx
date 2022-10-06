@@ -3,7 +3,6 @@ import { getMovies } from "../services/fakeMovieService";
 import Pagination from "./common/pagination";
 import { paginate } from "../utils/pagination";
 import PropTypes from "prop-types";
-// import genre from "./genre";
 import ListGroup from "./common/listGroup";
 import { getGenres } from "../services/fakeGenreService";
 import MoviesTable from "./common/moviesTable";

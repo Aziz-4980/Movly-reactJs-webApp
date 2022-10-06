@@ -1,17 +1,21 @@
 import React, { Component } from "react";
-import { Badge } from "react-bootstrap";
 
 const NavBar = ({ totalCounters }) => {
   return (
-    <div className="container">
-      <nav className="navbar navbar-expand-lg bg-light">
-        <div className="container-fluid">
-          <a className="navbar-brand" href="#">
-            Navbar <Badge className="bg-success">{totalCounters}</Badge>
-          </a>
-        </div>
-      </nav>
-    </div>
+    <ul>
+      <li>
+        <a href="/">Home</a>
+      </li>
+      <li>
+        <a href="/products">Products</a>
+      </li>
+      <li>
+        <a href="/posts/2018/06">Posts</a>
+      </li>
+      <li>
+        <a href="/admin">Admin</a>
+      </li>
+    </ul>
   );
 };
 
