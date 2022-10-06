@@ -24,8 +24,7 @@ class App extends Component {
           <Routes>
             <Route path={"/products/:id"} element={<ProductDetails />} />
             <Route path={"/products"} element={<Products />} />
-            <Route path="/posts/"  >
-              <Route path=":year/" element={<Posts />} />
+            <Route path="/posts/:year/"  >
               <Route path=":month/" element={<Posts />} />
               <Route path="" element={<Posts />} />
 

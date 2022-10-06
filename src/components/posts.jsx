@@ -1,9 +1,11 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 
 const Posts = () => {
   const { year, month } = useParams();
+  const searchParams = useSearchParams();
 
+  console.log(searchParams[0].get("sortBy"));
   return (
     <div>
       <h1>Posts</h1>
