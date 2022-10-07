@@ -7,7 +7,7 @@ import Posts from "./components/posts";
 import Home from "./components/home";
 import ProductDetails from "./components/productDetails";
 import Dashboard from "./components/admin/dashboard";
-
+import NotFound from "./components/notFound";
 
 
 
@@ -29,8 +29,9 @@ class App extends Component {
               <Route path="" element={<Posts />} />
 
             </Route>
-            <Route path={"/admin"} element={<Dashboard />} />
+            <Route path={"/admin/*"} element={<Dashboard />} />
             <Route path={"/"} element={<Home />} />
+            <Route path={'*'} element={<NotFound />} />
           </Routes>
         </div>
       </div>
