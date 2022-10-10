@@ -7,6 +7,7 @@ import ListGroup from "./common/listGroup";
 import { getGenres } from "../services/fakeGenreService";
 import MoviesTable from "./common/moviesTable";
 import _ from "lodash";
+import NavBar from "./navbar";
 
 class Movies extends Component {
   state = {
@@ -76,11 +77,9 @@ class Movies extends Component {
 
     return (
       <>
-        <br />
-        <br />
-        <br />
+        {/* <NavBar /> */}
         <div className={"row"}>
-          <div className={"col-md-3 offset-1  "}>
+          <div className={"col-md-3 offset-1 clickable "}>
             <ListGroup
               items={this.state.genres}
               selectedGenre={this.state.selectedGenre}
