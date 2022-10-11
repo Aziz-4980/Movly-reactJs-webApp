@@ -12,7 +12,7 @@ import Rentals from './components/rentals';
 import Movies from './components/movie';
 import Customers from './components/customers';
 import MoviesForm from './components/moviesForm';
-
+import Login from './components/login';
 
 class App extends Component {
 
@@ -33,7 +33,8 @@ class App extends Component {
 
             </Route>
             <Route path={"/admin/*"} element={<Dashboard />} /> */}
-            <Route path={'movies/:id'} element={<MoviesForm />} />
+            <Route path={'/movies/:id'} element={<MoviesForm />} />
+            <Route path={'/login'} element={<Login />} />
             <Route path={"/customers"} element={<Customers />} />
             <Route path={"/rentals"} element={<Rentals />} />
             <Route path={"/movies"} element={<Movies />} />
